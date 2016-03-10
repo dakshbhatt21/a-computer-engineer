@@ -13,13 +13,13 @@
         android:id="@+id/btn_pick_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pick Image rom Gallery"/>
+        android:text="@string/str_pick_image"/>
 
     <TextView
         android:id="@+id/tv_image_path"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="no image selected"
+        android:text="@string/str_no_image"
         android:gravity="center"
         android:layout_alignParentBottom="true"/>
 
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
-        android:contentDescription="image"
+        android:contentDescription="@string/image"
         android:layout_above="@id/tv_image_path"
         android:layout_below="@id/btn_pick_image"/>
 
