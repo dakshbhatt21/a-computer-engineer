@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> alPost = new ArrayList<>();
         alPost.add("PICK IMAGE FROM GALLERY BEFORE AND AFTER KITKAT VERSION IN ANDROID");
         alPost.add("HOW TO DISPLAY CANVAS ON IMAGEVIEW AND SAVE CANVAS AS BITMAP AND STORE IN SDCARD IN ANDROID");
+        alPost.add("DRAW CIRCLE SHAPE IN IMAGEVIEW IN ANDROID");
 
         PostAdapter adapter = new PostAdapter(alPost);
         rv.setAdapter(adapter);
@@ -63,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
                             case 1:
                                 Intent intentCanvasDemo = new Intent(MainActivity.this, CanvasDemoActivity.class);
                                 startActivity(intentCanvasDemo);
+                                break;
+                            case 2:
+                                Intent intentCircleImageView = new Intent(MainActivity.this, CircleImageViewActivity.class);
+                                startActivity(intentCircleImageView);
                                 break;
                         }
 

@@ -20,10 +20,11 @@
         </activity>
         <activity
             android:name=".PickImageActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".CanvasDemoActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".CircleImageViewActivity"></activity>
     </application>
 
 </manifest>
