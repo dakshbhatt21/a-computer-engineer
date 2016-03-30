@@ -5,3 +5,4 @@ Current source code:
 - Pick image from gallery before and after KITKAT version in Android
 - How to display Canvas on ImageView and save Canvas as Bitmap and store in sdcard in Android
 - Draw circle shape in ImageView in Android
+- Limit number range in EditText using InputFilter in Android
