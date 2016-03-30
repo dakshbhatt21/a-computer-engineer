@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         alPost.add("PICK IMAGE FROM GALLERY BEFORE AND AFTER KITKAT VERSION IN ANDROID");
         alPost.add("HOW TO DISPLAY CANVAS ON IMAGEVIEW AND SAVE CANVAS AS BITMAP AND STORE IN SDCARD IN ANDROID");
         alPost.add("DRAW CIRCLE SHAPE IN IMAGEVIEW IN ANDROID");
+        alPost.add("LIMIT NUMBER RANGE IN EDITTEXT USING INPUTFILTER IN ANDROID");
 
         PostAdapter adapter = new PostAdapter(alPost);
         rv.setAdapter(adapter);
@@ -68,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
                             case 2:
                                 Intent intentCircleImageView = new Intent(MainActivity.this, CircleImageViewActivity.class);
                                 startActivity(intentCircleImageView);
+                                break;
+                            case 3:
+                                Intent intentLimitNumberRange = new Intent(MainActivity.this, LimitNumberRangeActivity.class);
+                                startActivity(intentLimitNumberRange);
                                 break;
                         }
 

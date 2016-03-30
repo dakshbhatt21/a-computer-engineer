@@ -24,7 +24,12 @@
         <activity
             android:name=".CanvasDemoActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".CircleImageViewActivity"></activity>
+        <activity
+            android:name=".CircleImageViewActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".LimitNumberRangeActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
