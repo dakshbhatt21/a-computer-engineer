@@ -12,6 +12,8 @@
         android:id="@+id/cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         cardview:cardCornerRadius="1dp"
         cardview:cardElevation="2dp"
         cardview:cardUseCompatPadding="true">

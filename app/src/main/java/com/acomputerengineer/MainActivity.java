@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(llm);
 
         ArrayList<String> alPost = new ArrayList<>();
-        alPost.add("PICK IMAGE FROM GALLERY BEFORE AND AFTER KITKAT VERSION IN ANDROID");
+        alPost.add("PICK IMAGE FROM GALLERY BEFORE AND AFTER KITKAT VERSION IN ANDROID(UPDATED)");
         alPost.add("HOW TO DISPLAY CANVAS ON IMAGEVIEW AND SAVE CANVAS AS BITMAP AND STORE IN SDCARD IN ANDROID");
         alPost.add("DRAW CIRCLE SHAPE IN IMAGEVIEW IN ANDROID");
         alPost.add("LIMIT NUMBER RANGE IN EDITTEXT USING INPUTFILTER IN ANDROID");

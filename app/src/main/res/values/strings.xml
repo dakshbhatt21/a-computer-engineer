@@ -5,6 +5,7 @@
     <string name="str_select_image">Select Picture</string>
     <string name="str_no_image">no image selected</string>
     <string name="str_image_path">image path</string>
+    <string name="str_image_google_drive">image from Google Drive</string>
     <string name="str_add_text">Add Text To Canvas</string>
     <string name="str_save_image">Save Image</string>
 
