@@ -2,12 +2,14 @@
     <string name="app_name">A Computer Engineer</string>
 
     <string name="str_pick_image">Pick Image From Gallery</string>
+    <string name="str_pick_image_resize">Pick Image From Gallery And Resize</string>
     <string name="str_select_image">Select Picture</string>
     <string name="str_no_image">no image selected</string>
     <string name="str_image_path">image path</string>
     <string name="str_image_google_drive">image from Google Drive</string>
     <string name="str_add_text">Add Text To Canvas</string>
     <string name="str_save_image">Save Image</string>
+    <string name="str_maximum_size">Enter Maximum Size</string>
 
     <string name="act_canvas_demo">Canvas Demo</string>
 

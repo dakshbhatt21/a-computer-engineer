@@ -6,3 +6,4 @@ Current source code:
 - How to display Canvas on ImageView and save Canvas as Bitmap and store in sdcard in Android
 - Draw circle shape in ImageView in Android
 - Limit number range in EditText using InputFilter in Android
+- Resize image during decode from File to Bitmap in Android(to prevent OutOfMemory error)

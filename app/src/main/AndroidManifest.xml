@@ -14,7 +14,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -29,7 +28,10 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".LimitNumberRangeActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ResizeImageDecodeBitmapActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

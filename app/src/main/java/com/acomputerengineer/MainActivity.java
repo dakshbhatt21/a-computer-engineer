@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         alPost.add("HOW TO DISPLAY CANVAS ON IMAGEVIEW AND SAVE CANVAS AS BITMAP AND STORE IN SDCARD IN ANDROID");
         alPost.add("DRAW CIRCLE SHAPE IN IMAGEVIEW IN ANDROID");
         alPost.add("LIMIT NUMBER RANGE IN EDITTEXT USING INPUTFILTER IN ANDROID");
+        alPost.add("RESIZE IMAGE DURING DECODE FROM FILE TO BITMAP IN ANDROID(TO PREVENT OOM)");
 
         PostAdapter adapter = new PostAdapter(alPost);
         rv.setAdapter(adapter);
@@ -73,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
                             case 3:
                                 Intent intentLimitNumberRange = new Intent(MainActivity.this, LimitNumberRangeActivity.class);
                                 startActivity(intentLimitNumberRange);
+                                break;
+                            case 4:
+                                Intent intentResizeImageDecodeBitmap = new Intent(MainActivity.this, ResizeImageDecodeBitmapActivity.class);
+                                startActivity(intentResizeImageDecodeBitmap);
                                 break;
                         }
 

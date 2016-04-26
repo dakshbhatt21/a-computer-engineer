@@ -9,7 +9,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.os.ParcelFileDescriptor;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -17,30 +16,32 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.FileInputStream;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-public class PickImageActivity extends AppCompatActivity {
+public class ResizeImageDecodeBitmapActivity extends AppCompatActivity {
 
     ImageView iv = null;
-    TextView tvImagePath = null;
-    String strImagePath = "no image selected";
+    TextView tvNote = null;
+    EditText etMaximumSize = null;
 
+    String strImagePath = "no image selected";
+    int originalWidth = 0, originalHeight = 0, newWidth = 0, newHeight = 0, intMaximumSize = 0;
     public static boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pick_image);
+        setContentView(R.layout.activity_resize_image_decode_bitmap);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -48,21 +49,32 @@ public class PickImageActivity extends AppCompatActivity {
 
         Button btnPickImage = (Button) findViewById(R.id.btn_pick_image);
         iv = (ImageView) findViewById(R.id.iv);
-        tvImagePath = (TextView) findViewById(R.id.tv_image_path);
+        tvNote = (TextView) findViewById(R.id.tv_note);
+        etMaximumSize = (EditText) findViewById(R.id.et_maximum_size);
 
         btnPickImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isKitKat) {
-                    Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-                    intent.addCategory(Intent.CATEGORY_OPENABLE);
-                    intent.setType("image/*");
-                    startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.str_select_image)), 1);
-                } else {
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.str_select_image)), 1);
+
+                String strMaximumSize = (String.valueOf("").equals(etMaximumSize.getText().toString())) ? "0" : etMaximumSize.getText().toString();
+                int maximumSize = Integer.parseInt(strMaximumSize);
+
+                if(0 < maximumSize) {
+                    intMaximumSize = maximumSize;
+                    if (isKitKat) {
+                        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                        intent.addCategory(Intent.CATEGORY_OPENABLE);
+                        intent.setType("image/*");
+                        startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.str_select_image)), 1);
+                    } else {
+                        Intent intent = new Intent();
+                        intent.setType("image/*");
+                        intent.setAction(Intent.ACTION_GET_CONTENT);
+                        startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.str_select_image)), 1);
+                    }
+                }
+                else    {
+                    Toast.makeText(ResizeImageDecodeBitmapActivity.this, "please enter a valid maximum size", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -76,7 +88,7 @@ public class PickImageActivity extends AppCompatActivity {
             boolean isImageFromGoogleDrive = false;
             Uri uri = data.getData();
 
-            if (isKitKat && DocumentsContract.isDocumentUri(PickImageActivity.this, uri)) {
+            if (isKitKat && DocumentsContract.isDocumentUri(ResizeImageDecodeBitmapActivity.this, uri)) {
 
                 if ("com.android.externalstorage.documents".equals(uri.getAuthority())) {
                     String docId = DocumentsContract.getDocumentId(uri);
@@ -242,22 +254,49 @@ public class PickImageActivity extends AppCompatActivity {
                 try {
                     Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
                     iv.setImageBitmap(bitmap);
-                    tvImagePath.setText(getResources().getString(R.string.str_image_google_drive));
+                    tvNote.setText(getResources().getString(R.string.str_image_google_drive));
                 }
                 catch (Exception e) {
                     e.printStackTrace();
                 }
             }
             else    {
-                File f = new File(strImagePath);
-                BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-                Bitmap bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(),bmOptions);
+                Bitmap bitmap = decodeFile(strImagePath, intMaximumSize);
                 iv.setImageBitmap(bitmap);
-                tvImagePath.setText(getResources().getString(R.string.str_image_path) + ": " + strImagePath);
+                newWidth = bitmap.getWidth();
+                newHeight = bitmap.getHeight();
+                tvNote.setText("original width: " + originalWidth + " and height: " + originalHeight + "\n" + "new width: " + newWidth + " and height: " + newHeight);
             }
 
 
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private Bitmap decodeFile(String strImagePath, int maximumSize) {
+        Bitmap b = null;
+        int max_size = maximumSize;
+        File f = new File(strImagePath);
+        try {
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            FileInputStream fis = new FileInputStream(f);
+            BitmapFactory.decodeStream(fis, null, o);
+            fis.close();
+            originalWidth = o.outWidth;
+            originalHeight = o.outHeight;
+            int scale = 1;
+            if (o.outHeight > max_size || o.outWidth > max_size) {
+                scale = (int) Math.pow(2, (int) Math.ceil(Math.log(max_size / (double) Math.max(o.outHeight, o.outWidth)) / Math.log(0.5)));
+            }
+            BitmapFactory.Options o2 = new BitmapFactory.Options();
+            o2.inSampleSize = scale;
+            fis = new FileInputStream(f);
+            b = BitmapFactory.decodeStream(fis, null, o2);
+            fis.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return b;
     }
 }
