@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         alPost.add("DRAW CIRCLE SHAPE IN IMAGEVIEW IN ANDROID");
         alPost.add("LIMIT NUMBER RANGE IN EDITTEXT USING INPUTFILTER IN ANDROID");
         alPost.add("RESIZE IMAGE DURING DECODE FROM FILE TO BITMAP IN ANDROID(TO PREVENT OOM)");
+        alPost.add("VARIOUS MATERIAL DESIGNS FOR BUTTON IN ANDROID");
 
         PostAdapter adapter = new PostAdapter(alPost);
         rv.setAdapter(adapter);
@@ -78,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
                             case 4:
                                 Intent intentResizeImageDecodeBitmap = new Intent(MainActivity.this, ResizeImageDecodeBitmapActivity.class);
                                 startActivity(intentResizeImageDecodeBitmap);
+                                break;
+                            case 5:
+                                Intent intentMaterialDesignButtons = new Intent(MainActivity.this, MaterialDesignButtonsActivity.class);
+                                startActivity(intentMaterialDesignButtons);
                                 break;
                         }
 
