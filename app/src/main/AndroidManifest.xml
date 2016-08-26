@@ -36,6 +36,8 @@
         <activity
             android:name=".MaterialDesignButtonsActivity"
             android:parentActivityName=".MainActivity" />
+        <activity android:name=".ShareImageWhatsappActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         alPost.add("LIMIT NUMBER RANGE IN EDITTEXT USING INPUTFILTER IN ANDROID");
         alPost.add("RESIZE IMAGE DURING DECODE FROM FILE TO BITMAP IN ANDROID(TO PREVENT OOM)");
         alPost.add("VARIOUS MATERIAL DESIGNS FOR BUTTON IN ANDROID");
+        alPost.add("SHARE IMAGE TO WHATSAPP IN ANDROID");
 
         PostAdapter adapter = new PostAdapter(alPost);
         rv.setAdapter(adapter);
@@ -83,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
                             case 5:
                                 Intent intentMaterialDesignButtons = new Intent(MainActivity.this, MaterialDesignButtonsActivity.class);
                                 startActivity(intentMaterialDesignButtons);
+                                break;
+                            case 6:
+                                Intent intentShareImageWhatsapp = new Intent(MainActivity.this, ShareImageWhatsappActivity.class);
+                                startActivity(intentShareImageWhatsapp);
                                 break;
                         }
 
