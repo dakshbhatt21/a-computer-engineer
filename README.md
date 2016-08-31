@@ -9,3 +9,4 @@ Current source code:
 - Resize image during decode from File to Bitmap in Android(to prevent OutOfMemory error)(<a href='https://acomputerengineer.wordpress.com/2015/04/01/resize-image-during-decode-from-file-to-bitmap-in-android/' target='_blank'>view article</a>)
 - Various material designs for Button in Android(<a href='https://acomputerengineer.wordpress.com/2016/04/28/various-material-designs-for-button-in-android/' target='_blank'>view article</a>)
 - Share Image to (only)WhatsApp in Android(<a href='https://acomputerengineer.wordpress.com/2014/11/02/add-share-image-to-whatsapp-button-in-android/' target='_blank'>view article</a>)
+- CRUD functions in SQLite in Android(<a href='https://acomputerengineer.wordpress.com/2016/08/31/crud-functions-in-sqlite-in-android/' target='_blank'>view article</a>)

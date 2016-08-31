@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         alPost.add("RESIZE IMAGE DURING DECODE FROM FILE TO BITMAP IN ANDROID(TO PREVENT OOM)");
         alPost.add("VARIOUS MATERIAL DESIGNS FOR BUTTON IN ANDROID");
         alPost.add("SHARE IMAGE TO WHATSAPP IN ANDROID");
+        alPost.add("CRUD FUNCTIONS IN SQLITE IN ANDROID");
 
         PostAdapter adapter = new PostAdapter(alPost);
         rv.setAdapter(adapter);
@@ -88,6 +89,10 @@ public class MainActivity extends AppCompatActivity {
                             case 6:
                                 Intent intentShareImageWhatsapp = new Intent(MainActivity.this, ShareImageWhatsappActivity.class);
                                 startActivity(intentShareImageWhatsapp);
+                                break;
+                            case 7:
+                                Intent intentSqliteCRUD = new Intent(MainActivity.this, SqliteCRUDActivity.class);
+                                startActivity(intentSqliteCRUD);
                                 break;
                         }
 
