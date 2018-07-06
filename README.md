@@ -2,6 +2,7 @@
 Collection of <b>Android source code</b> for my blog <b>[A Computer Engineer](http://acomputerengineer.wordpress.com/)</b>.
 
 Current source code:
+- Display image grid in RecyclerView in Android(<a href='https://acomputerengineer.wordpress.com/2018/04/15/display-image-grid-in-recyclerview-in-android/' target='_blank'>view article</a>)
 - Pick image from gallery before and after KITKAT version in Android (<b>update:</b> works with external sdcard and Google Drive)(<a href='https://acomputerengineer.wordpress.com/2015/07/04/pick-image-from-gallery-before-and-after-kitkat-version-in-android/' target='_blank'>view article</a>)
 - How to display Canvas on ImageView and save Canvas as Bitmap and store in sdcard in Android(<a href='https://acomputerengineer.wordpress.com/2015/01/13/how-to-draw-canvas-on-imageview-and-save-canvas-as-bitmap-and-store-in-sdcard-in-android/' target='_blank'>view article</a>)
 - Draw circle shape in ImageView in Android(<a href='https://acomputerengineer.wordpress.com/2015/01/05/draw-circle-shape-in-imageview-in-android/' target='_blank'>view article</a>)

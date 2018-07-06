@@ -1,8 +1,8 @@
 package com.acomputerengineer;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,12 +20,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
+        RecyclerView rv = findViewById(R.id.rv);
         rv.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(MainActivity.this);
         rv.setLayoutManager(llm);
 
         ArrayList<String> alPost = new ArrayList<>();
+        alPost.add("DISPLAY IMAGE GRID IN RECYCLERVIEW IN ANDROID");
         alPost.add("PICK IMAGE FROM GALLERY BEFORE AND AFTER KITKAT VERSION IN ANDROID(UPDATED)");
         alPost.add("HOW TO DISPLAY CANVAS ON IMAGEVIEW AND SAVE CANVAS AS BITMAP AND STORE IN SDCARD IN ANDROID");
         alPost.add("DRAW CIRCLE SHAPE IN IMAGEVIEW IN ANDROID");
@@ -53,44 +54,48 @@ public class MainActivity extends AppCompatActivity {
 
             public PostViewHolder(View itemView) {
                 super(itemView);
-                cv = (CardView) itemView.findViewById(R.id.cv);
-                tvName = (TextView) itemView.findViewById(R.id.tv_name);
+                cv = itemView.findViewById(R.id.cv);
+                tvName = itemView.findViewById(R.id.tv_name);
 
                 cv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         int position = getAdapterPosition();
 
-                        switch (position)   {
+                        switch (position) {
                             case 0:
+                                Intent intentImageGrid = new Intent(MainActivity.this, ImageGridActivity.class);
+                                startActivity(intentImageGrid);
+                                break;
+                            case 1:
                                 Intent intentPickImage = new Intent(MainActivity.this, PickImageActivity.class);
                                 startActivity(intentPickImage);
                                 break;
-                            case 1:
+                            case 2:
                                 Intent intentCanvasDemo = new Intent(MainActivity.this, CanvasDemoActivity.class);
                                 startActivity(intentCanvasDemo);
                                 break;
-                            case 2:
+                            case 3:
                                 Intent intentCircleImageView = new Intent(MainActivity.this, CircleImageViewActivity.class);
                                 startActivity(intentCircleImageView);
                                 break;
-                            case 3:
+                            case 4:
                                 Intent intentLimitNumberRange = new Intent(MainActivity.this, LimitNumberRangeActivity.class);
                                 startActivity(intentLimitNumberRange);
                                 break;
-                            case 4:
+                            case 5:
                                 Intent intentResizeImageDecodeBitmap = new Intent(MainActivity.this, ResizeImageDecodeBitmapActivity.class);
                                 startActivity(intentResizeImageDecodeBitmap);
                                 break;
-                            case 5:
+                            case 6:
                                 Intent intentMaterialDesignButtons = new Intent(MainActivity.this, MaterialDesignButtonsActivity.class);
                                 startActivity(intentMaterialDesignButtons);
                                 break;
-                            case 6:
+                            case 7:
                                 Intent intentShareImageWhatsapp = new Intent(MainActivity.this, ShareImageWhatsappActivity.class);
                                 startActivity(intentShareImageWhatsapp);
                                 break;
-                            case 7:
+                            case 8:
                                 Intent intentSqliteCRUD = new Intent(MainActivity.this, SqliteCRUDActivity.class);
                                 startActivity(intentSqliteCRUD);
                                 break;
