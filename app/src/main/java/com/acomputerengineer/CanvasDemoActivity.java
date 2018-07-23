@@ -9,10 +9,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,9 +38,9 @@ public class CanvasDemoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        Button btnAddText = (Button) findViewById(R.id.btn_add_text);
-        Button btnSaveImage = (Button) findViewById(R.id.btn_save_image);
-        final ImageView iv = (ImageView) findViewById(R.id.iv);
+        Button btnAddText = findViewById(R.id.btn_add_text);
+        Button btnSaveImage = findViewById(R.id.btn_save_image);
+        final ImageView iv = findViewById(R.id.iv);
 
         btnAddText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,7 @@ public class CanvasDemoActivity extends AppCompatActivity {
                     final Handler handler = new Handler();
 
                     //this code will scan the image so that it will appear in your gallery when you open next time
-                    MediaScannerConnection.scanFile(CanvasDemoActivity.this, new String[] { output.toString() }, null,
+                    MediaScannerConnection.scanFile(CanvasDemoActivity.this, new String[]{output.toString()}, null,
                             new MediaScannerConnection.OnScanCompletedListener() {
                                 public void onScanCompleted(String path, Uri uri) {
                                     handler.post(new Runnable() {
@@ -111,7 +111,7 @@ public class CanvasDemoActivity extends AppCompatActivity {
                     );
                 } catch (FileNotFoundException fnfe) {
                     fnfe.printStackTrace();
-                } catch (IOException ioe)   {
+                } catch (IOException ioe) {
                     ioe.printStackTrace();
                 }
             }

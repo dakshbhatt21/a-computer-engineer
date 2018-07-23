@@ -8,11 +8,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -47,10 +47,10 @@ public class ResizeImageDecodeBitmapActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        Button btnPickImage = (Button) findViewById(R.id.btn_pick_image);
-        iv = (ImageView) findViewById(R.id.iv);
-        tvNote = (TextView) findViewById(R.id.tv_note);
-        etMaximumSize = (EditText) findViewById(R.id.et_maximum_size);
+        Button btnPickImage = findViewById(R.id.btn_pick_image);
+        iv = findViewById(R.id.iv);
+        tvNote = findViewById(R.id.tv_note);
+        etMaximumSize = findViewById(R.id.et_maximum_size);
 
         btnPickImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +59,7 @@ public class ResizeImageDecodeBitmapActivity extends AppCompatActivity {
                 String strMaximumSize = (String.valueOf("").equals(etMaximumSize.getText().toString())) ? "0" : etMaximumSize.getText().toString();
                 int maximumSize = Integer.parseInt(strMaximumSize);
 
-                if(0 < maximumSize) {
+                if (0 < maximumSize) {
                     intMaximumSize = maximumSize;
                     if (isKitKat) {
                         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
@@ -72,8 +72,7 @@ public class ResizeImageDecodeBitmapActivity extends AppCompatActivity {
                         intent.setAction(Intent.ACTION_GET_CONTENT);
                         startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.str_select_image)), 1);
                     }
-                }
-                else    {
+                } else {
                     Toast.makeText(ResizeImageDecodeBitmapActivity.this, "please enter a valid maximum size", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -97,72 +96,54 @@ public class ResizeImageDecodeBitmapActivity extends AppCompatActivity {
 
                     if ("primary".equalsIgnoreCase(type)) {
                         strImagePath = Environment.getExternalStorageDirectory() + "/" + split[1];
-                    }
-                    else {
+                    } else {
                         Pattern DIR_SEPORATOR = Pattern.compile("/");
                         Set<String> rv = new HashSet<>();
                         String rawExternalStorage = System.getenv("EXTERNAL_STORAGE");
                         String rawSecondaryStoragesStr = System.getenv("SECONDARY_STORAGE");
                         String rawEmulatedStorageTarget = System.getenv("EMULATED_STORAGE_TARGET");
-                        if(TextUtils.isEmpty(rawEmulatedStorageTarget))
-                        {
-                            if(TextUtils.isEmpty(rawExternalStorage))
-                            {
+                        if (TextUtils.isEmpty(rawEmulatedStorageTarget)) {
+                            if (TextUtils.isEmpty(rawExternalStorage)) {
                                 rv.add("/storage/sdcard0");
-                            }
-                            else
-                            {
+                            } else {
                                 rv.add(rawExternalStorage);
                             }
-                        }
-                        else
-                        {
+                        } else {
                             String rawUserId;
-                            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1)
-                            {
+                            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
                                 rawUserId = "";
-                            }
-                            else
-                            {
+                            } else {
                                 String path = Environment.getExternalStorageDirectory().getAbsolutePath();
                                 String[] folders = DIR_SEPORATOR.split(path);
                                 String lastFolder = folders[folders.length - 1];
                                 boolean isDigit = false;
-                                try
-                                {
+                                try {
                                     Integer.valueOf(lastFolder);
                                     isDigit = true;
-                                }
-                                catch(NumberFormatException ignored)
-                                {
+                                } catch (NumberFormatException ignored) {
                                 }
                                 rawUserId = isDigit ? lastFolder : "";
                             }
-                            if(TextUtils.isEmpty(rawUserId))
-                            {
+                            if (TextUtils.isEmpty(rawUserId)) {
                                 rv.add(rawEmulatedStorageTarget);
-                            }
-                            else
-                            {
+                            } else {
                                 rv.add(rawEmulatedStorageTarget + File.separator + rawUserId);
                             }
                         }
-                        if(!TextUtils.isEmpty(rawSecondaryStoragesStr))
-                        {
+                        if (!TextUtils.isEmpty(rawSecondaryStoragesStr)) {
                             String[] rawSecondaryStorages = rawSecondaryStoragesStr.split(File.pathSeparator);
                             Collections.addAll(rv, rawSecondaryStorages);
                         }
                         String[] temp = rv.toArray(new String[rv.size()]);
 
-                        for (int i = 0; i < temp.length; i++)   {
+                        for (int i = 0; i < temp.length; i++) {
                             File tempf = new File(temp[i] + "/" + split[1]);
-                            if(tempf.exists()) {
+                            if (tempf.exists()) {
                                 strImagePath = temp[i] + "/" + split[1];
                             }
                         }
                     }
-                }
-                else if ("com.android.providers.downloads.documents".equals(uri.getAuthority())) {
+                } else if ("com.android.providers.downloads.documents".equals(uri.getAuthority())) {
                     String id = DocumentsContract.getDocumentId(uri);
                     Uri contentUri = ContentUris.withAppendedId(
                             Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
@@ -184,8 +165,7 @@ public class ResizeImageDecodeBitmapActivity extends AppCompatActivity {
                         if (cursor != null)
                             cursor.close();
                     }
-                }
-                else if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
+                } else if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
                     String docId = DocumentsContract.getDocumentId(uri);
                     String[] split = docId.split(":");
                     String type = split[0];
@@ -221,12 +201,10 @@ public class ResizeImageDecodeBitmapActivity extends AppCompatActivity {
                         if (cursor != null)
                             cursor.close();
                     }
-                }
-                else if("com.google.android.apps.docs.storage".equals(uri.getAuthority()))   {
+                } else if ("com.google.android.apps.docs.storage".equals(uri.getAuthority())) {
                     isImageFromGoogleDrive = true;
                 }
-            }
-            else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            } else if ("content".equalsIgnoreCase(uri.getScheme())) {
                 Cursor cursor = null;
                 String column = "_data";
                 String[] projection = {
@@ -244,23 +222,20 @@ public class ResizeImageDecodeBitmapActivity extends AppCompatActivity {
                     if (cursor != null)
                         cursor.close();
                 }
-            }
-            else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            } else if ("file".equalsIgnoreCase(uri.getScheme())) {
                 strImagePath = uri.getPath();
             }
 
 
-            if(isImageFromGoogleDrive)  {
+            if (isImageFromGoogleDrive) {
                 try {
                     Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
                     iv.setImageBitmap(bitmap);
                     tvNote.setText(getResources().getString(R.string.str_image_google_drive));
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }
-            else    {
+            } else {
                 Bitmap bitmap = decodeFile(strImagePath, intMaximumSize);
                 iv.setImageBitmap(bitmap);
                 newWidth = bitmap.getWidth();

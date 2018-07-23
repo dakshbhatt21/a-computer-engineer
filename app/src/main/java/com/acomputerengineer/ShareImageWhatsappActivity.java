@@ -9,17 +9,16 @@ import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,11 +43,11 @@ public class ShareImageWhatsappActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share_image_whatsapp);
 
-        btnPickImage = (Button) findViewById(R.id.btn_pick_image);
-        btnShareImage = (Button) findViewById(R.id.btn_share_image);
-        btnShareImageWhatsapp = (Button) findViewById(R.id.btn_share_image_whatsapp);
+        btnPickImage = findViewById(R.id.btn_pick_image);
+        btnShareImage = findViewById(R.id.btn_share_image);
+        btnShareImageWhatsapp = findViewById(R.id.btn_share_image_whatsapp);
 
-        iv = (ImageView) findViewById(R.id.iv);
+        iv = findViewById(R.id.iv);
 
         btnPickImage.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -13,7 +13,7 @@ public class LimitNumberRangeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_limit_number_range);
 
-        EditText etMonth = (EditText) findViewById(R.id.edt_month);
+        EditText etMonth = findViewById(R.id.edt_month);
         etMonth.setFilters(new InputFilter[]{new InputFilterMinMax("1", "12")});
 
     }

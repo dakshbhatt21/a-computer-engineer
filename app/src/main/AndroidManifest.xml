@@ -46,6 +46,9 @@
         <activity
             android:name=".ImageGridActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ListAlertDialogActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

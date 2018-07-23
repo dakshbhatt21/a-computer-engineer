@@ -8,12 +8,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
-import android.os.ParcelFileDescriptor;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -21,9 +20,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -35,7 +31,7 @@ public class PickImageActivity extends AppCompatActivity {
     TextView tvImagePath = null;
     String strImagePath = "no image selected";
 
-   boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+    boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +42,9 @@ public class PickImageActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        Button btnPickImage = (Button) findViewById(R.id.btn_pick_image);
-        iv = (ImageView) findViewById(R.id.iv);
-        tvImagePath = (TextView) findViewById(R.id.tv_image_path);
+        Button btnPickImage = findViewById(R.id.btn_pick_image);
+        iv = findViewById(R.id.iv);
+        tvImagePath = findViewById(R.id.tv_image_path);
 
         btnPickImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,72 +81,54 @@ public class PickImageActivity extends AppCompatActivity {
 
                     if ("primary".equalsIgnoreCase(type)) {
                         strImagePath = Environment.getExternalStorageDirectory() + "/" + split[1];
-                    }
-                    else {
+                    } else {
                         Pattern DIR_SEPORATOR = Pattern.compile("/");
                         Set<String> rv = new HashSet<>();
                         String rawExternalStorage = System.getenv("EXTERNAL_STORAGE");
                         String rawSecondaryStoragesStr = System.getenv("SECONDARY_STORAGE");
                         String rawEmulatedStorageTarget = System.getenv("EMULATED_STORAGE_TARGET");
-                        if(TextUtils.isEmpty(rawEmulatedStorageTarget))
-                        {
-                            if(TextUtils.isEmpty(rawExternalStorage))
-                            {
+                        if (TextUtils.isEmpty(rawEmulatedStorageTarget)) {
+                            if (TextUtils.isEmpty(rawExternalStorage)) {
                                 rv.add("/storage/sdcard0");
-                            }
-                            else
-                            {
+                            } else {
                                 rv.add(rawExternalStorage);
                             }
-                        }
-                        else
-                        {
+                        } else {
                             String rawUserId;
-                            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1)
-                            {
+                            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
                                 rawUserId = "";
-                            }
-                            else
-                            {
+                            } else {
                                 String path = Environment.getExternalStorageDirectory().getAbsolutePath();
                                 String[] folders = DIR_SEPORATOR.split(path);
                                 String lastFolder = folders[folders.length - 1];
                                 boolean isDigit = false;
-                                try
-                                {
+                                try {
                                     Integer.valueOf(lastFolder);
                                     isDigit = true;
-                                }
-                                catch(NumberFormatException ignored)
-                                {
+                                } catch (NumberFormatException ignored) {
                                 }
                                 rawUserId = isDigit ? lastFolder : "";
                             }
-                            if(TextUtils.isEmpty(rawUserId))
-                            {
+                            if (TextUtils.isEmpty(rawUserId)) {
                                 rv.add(rawEmulatedStorageTarget);
-                            }
-                            else
-                            {
+                            } else {
                                 rv.add(rawEmulatedStorageTarget + File.separator + rawUserId);
                             }
                         }
-                        if(!TextUtils.isEmpty(rawSecondaryStoragesStr))
-                        {
+                        if (!TextUtils.isEmpty(rawSecondaryStoragesStr)) {
                             String[] rawSecondaryStorages = rawSecondaryStoragesStr.split(File.pathSeparator);
                             Collections.addAll(rv, rawSecondaryStorages);
                         }
                         String[] temp = rv.toArray(new String[rv.size()]);
 
-                        for (int i = 0; i < temp.length; i++)   {
+                        for (int i = 0; i < temp.length; i++) {
                             File tempf = new File(temp[i] + "/" + split[1]);
-                            if(tempf.exists()) {
+                            if (tempf.exists()) {
                                 strImagePath = temp[i] + "/" + split[1];
                             }
                         }
                     }
-                }
-                else if ("com.android.providers.downloads.documents".equals(uri.getAuthority())) {
+                } else if ("com.android.providers.downloads.documents".equals(uri.getAuthority())) {
                     String id = DocumentsContract.getDocumentId(uri);
                     Uri contentUri = ContentUris.withAppendedId(
                             Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
@@ -172,8 +150,7 @@ public class PickImageActivity extends AppCompatActivity {
                         if (cursor != null)
                             cursor.close();
                     }
-                }
-                else if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
+                } else if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
                     String docId = DocumentsContract.getDocumentId(uri);
                     String[] split = docId.split(":");
                     String type = split[0];
@@ -209,12 +186,10 @@ public class PickImageActivity extends AppCompatActivity {
                         if (cursor != null)
                             cursor.close();
                     }
-                }
-                else if("com.google.android.apps.docs.storage".equals(uri.getAuthority()))   {
+                } else if ("com.google.android.apps.docs.storage".equals(uri.getAuthority())) {
                     isImageFromGoogleDrive = true;
                 }
-            }
-            else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            } else if ("content".equalsIgnoreCase(uri.getScheme())) {
                 Cursor cursor = null;
                 String column = "_data";
                 String[] projection = {
@@ -232,26 +207,23 @@ public class PickImageActivity extends AppCompatActivity {
                     if (cursor != null)
                         cursor.close();
                 }
-            }
-            else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            } else if ("file".equalsIgnoreCase(uri.getScheme())) {
                 strImagePath = uri.getPath();
             }
 
 
-            if(isImageFromGoogleDrive)  {
+            if (isImageFromGoogleDrive) {
                 try {
                     Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
                     iv.setImageBitmap(bitmap);
                     tvImagePath.setText(getResources().getString(R.string.str_image_google_drive));
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }
-            else    {
+            } else {
                 File f = new File(strImagePath);
                 BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-                Bitmap bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(),bmOptions);
+                Bitmap bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), bmOptions);
                 iv.setImageBitmap(bitmap);
                 tvImagePath.setText(getResources().getString(R.string.str_image_path) + ": " + strImagePath);
             }

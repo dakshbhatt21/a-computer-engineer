@@ -1,7 +1,7 @@
 package com.acomputerengineer;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.acomputerengineer.Utils.DatabaseHelper;
@@ -20,7 +20,7 @@ public class SqliteCRUDActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sqlite_crud);
 
-        tv = (TextView) findViewById(R.id.tv);
+        tv = findViewById(R.id.tv);
 
         dh = new DatabaseHelper(SqliteCRUDActivity.this);
         u = dh.new User();
