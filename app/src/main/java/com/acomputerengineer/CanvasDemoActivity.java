@@ -86,7 +86,7 @@ public class CanvasDemoActivity extends AppCompatActivity {
                 }
 
                 File output = new File(dir, "canvasdemo.jpg");
-                OutputStream os = null;
+                OutputStream os;
 
                 try {
                     os = new FileOutputStream(output);
@@ -122,21 +122,23 @@ public class CanvasDemoActivity extends AppCompatActivity {
     //your canvas as per your requirement
     public class CanvasWithText extends View {
 
-        String str;
+        private Paint pBackground, pText;
+
+        private String str;
 
         public CanvasWithText(Context context, String str) {
             super(context);
             this.str = str;
+            pBackground = new Paint();
+            pText = new Paint();
         }
 
         @Override
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
 
-            Paint pBackground = new Paint();
             pBackground.setColor(Color.WHITE);
             canvas.drawRect(0, 0, 512, 512, pBackground);
-            Paint pText = new Paint();
             pText.setColor(Color.BLACK);
             pText.setTextSize(20);
             canvas.drawText(str, 100, 100, pText);

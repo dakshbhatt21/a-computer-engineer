@@ -49,6 +49,9 @@
         <activity
             android:name=".ListAlertDialogActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".DrawLineWithFingerActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(llm);
 
         ArrayList<String> alPost = new ArrayList<>();
+        alPost.add("DRAW LINE USING FINGER ON CANVAS IN ANDROID");
         alPost.add("DISPLAY LIST IN ALERTDIALOG IN ANDROID(SIMPLE LIST, RADIO BUTTON LIST, CHECK BOX LIST)");
         alPost.add("DISPLAY IMAGE GRID IN RECYCLERVIEW IN ANDROID");
         alPost.add("PICK IMAGE FROM GALLERY BEFORE AND AFTER KITKAT VERSION IN ANDROID(UPDATED)");
@@ -65,42 +66,46 @@ public class MainActivity extends AppCompatActivity {
 
                         switch (position) {
                             case 0:
+                                Intent intentDrawLineWithFinger = new Intent(MainActivity.this, DrawLineWithFingerActivity.class);
+                                startActivity(intentDrawLineWithFinger);
+                                break;
+                            case 1:
                                 Intent intentListAlertDialog = new Intent(MainActivity.this, ListAlertDialogActivity.class);
                                 startActivity(intentListAlertDialog);
                                 break;
-                            case 1:
+                            case 2:
                                 Intent intentImageGrid = new Intent(MainActivity.this, ImageGridActivity.class);
                                 startActivity(intentImageGrid);
                                 break;
-                            case 2:
+                            case 3:
                                 Intent intentPickImage = new Intent(MainActivity.this, PickImageActivity.class);
                                 startActivity(intentPickImage);
                                 break;
-                            case 3:
+                            case 4:
                                 Intent intentCanvasDemo = new Intent(MainActivity.this, CanvasDemoActivity.class);
                                 startActivity(intentCanvasDemo);
                                 break;
-                            case 4:
+                            case 5:
                                 Intent intentCircleImageView = new Intent(MainActivity.this, CircleImageViewActivity.class);
                                 startActivity(intentCircleImageView);
                                 break;
-                            case 5:
+                            case 6:
                                 Intent intentLimitNumberRange = new Intent(MainActivity.this, LimitNumberRangeActivity.class);
                                 startActivity(intentLimitNumberRange);
                                 break;
-                            case 6:
+                            case 7:
                                 Intent intentResizeImageDecodeBitmap = new Intent(MainActivity.this, ResizeImageDecodeBitmapActivity.class);
                                 startActivity(intentResizeImageDecodeBitmap);
                                 break;
-                            case 7:
+                            case 8:
                                 Intent intentMaterialDesignButtons = new Intent(MainActivity.this, MaterialDesignButtonsActivity.class);
                                 startActivity(intentMaterialDesignButtons);
                                 break;
-                            case 8:
+                            case 9:
                                 Intent intentShareImageWhatsapp = new Intent(MainActivity.this, ShareImageWhatsappActivity.class);
                                 startActivity(intentShareImageWhatsapp);
                                 break;
-                            case 9:
+                            case 10:
                                 Intent intentSqliteCRUD = new Intent(MainActivity.this, SqliteCRUDActivity.class);
                                 startActivity(intentSqliteCRUD);
                                 break;

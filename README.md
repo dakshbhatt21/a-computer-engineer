@@ -2,6 +2,7 @@
 Collection of <b>Android source code</b> for my blog <b>[A Computer Engineer](http://acomputerengineer.wordpress.com/)</b>.
 
 Current source code:
+- Draw line using finger on Canvas in Android(<a href='https://acomputerengineer.wordpress.com/2018/08/25/draw-line-using-finger-on-canvas-in-android/' target='_blank'>view article</a>)
 - Display List in AlertDialog in Android(Simple List, Radio Button List, Check Box List)(<a href='https://acomputerengineer.wordpress.com/2018/07/23/display-list-in-alertdialog-in-androidsimple-list-radio-button-list-check-box-list/' target='_blank'>view article</a>)
 - Display image grid in RecyclerView in Android(<a href='https://acomputerengineer.wordpress.com/2018/04/15/display-image-grid-in-recyclerview-in-android/' target='_blank'>view article</a>)
 - Pick image from gallery before and after KITKAT version in Android (<b>update:</b> works with external sdcard and Google Drive)(<a href='https://acomputerengineer.wordpress.com/2015/07/04/pick-image-from-gallery-before-and-after-kitkat-version-in-android/' target='_blank'>view article</a>)
