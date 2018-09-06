@@ -1,5 +1,6 @@
 package com.acomputerengineer;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(llm);
 
         ArrayList<String> alPost = new ArrayList<>();
+        alPost.add("CREATE PDF FILE AND SAVE IT TO SDCARD IN ANDROID");
         alPost.add("DRAW LINE USING FINGER ON CANVAS IN ANDROID");
         alPost.add("DISPLAY LIST IN ALERTDIALOG IN ANDROID(SIMPLE LIST, RADIO BUTTON LIST, CHECK BOX LIST)");
         alPost.add("DISPLAY IMAGE GRID IN RECYCLERVIEW IN ANDROID");
@@ -40,6 +49,28 @@ public class MainActivity extends AppCompatActivity {
 
         PostAdapter adapter = new PostAdapter(alPost);
         rv.setAdapter(adapter);
+
+        Dexter.withActivity(this)
+                .withPermissions(
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .withListener(new MultiplePermissionsListener() {
+                    @Override
+                    public void onPermissionsChecked(MultiplePermissionsReport report) {
+                        if (report.areAllPermissionsGranted()) {
+                        }
+
+                        if (report.isAnyPermissionPermanentlyDenied()) {
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                        token.continuePermissionRequest();
+                    }
+                })
+                .onSameThread()
+                .check();
     }
 
     public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
@@ -66,46 +97,50 @@ public class MainActivity extends AppCompatActivity {
 
                         switch (position) {
                             case 0:
+                                Intent intentPDF = new Intent(MainActivity.this, PDFActivity.class);
+                                startActivity(intentPDF);
+                                break;
+                            case 1:
                                 Intent intentDrawLineWithFinger = new Intent(MainActivity.this, DrawLineWithFingerActivity.class);
                                 startActivity(intentDrawLineWithFinger);
                                 break;
-                            case 1:
+                            case 2:
                                 Intent intentListAlertDialog = new Intent(MainActivity.this, ListAlertDialogActivity.class);
                                 startActivity(intentListAlertDialog);
                                 break;
-                            case 2:
+                            case 3:
                                 Intent intentImageGrid = new Intent(MainActivity.this, ImageGridActivity.class);
                                 startActivity(intentImageGrid);
                                 break;
-                            case 3:
+                            case 4:
                                 Intent intentPickImage = new Intent(MainActivity.this, PickImageActivity.class);
                                 startActivity(intentPickImage);
                                 break;
-                            case 4:
+                            case 5:
                                 Intent intentCanvasDemo = new Intent(MainActivity.this, CanvasDemoActivity.class);
                                 startActivity(intentCanvasDemo);
                                 break;
-                            case 5:
+                            case 6:
                                 Intent intentCircleImageView = new Intent(MainActivity.this, CircleImageViewActivity.class);
                                 startActivity(intentCircleImageView);
                                 break;
-                            case 6:
+                            case 7:
                                 Intent intentLimitNumberRange = new Intent(MainActivity.this, LimitNumberRangeActivity.class);
                                 startActivity(intentLimitNumberRange);
                                 break;
-                            case 7:
+                            case 8:
                                 Intent intentResizeImageDecodeBitmap = new Intent(MainActivity.this, ResizeImageDecodeBitmapActivity.class);
                                 startActivity(intentResizeImageDecodeBitmap);
                                 break;
-                            case 8:
+                            case 9:
                                 Intent intentMaterialDesignButtons = new Intent(MainActivity.this, MaterialDesignButtonsActivity.class);
                                 startActivity(intentMaterialDesignButtons);
                                 break;
-                            case 9:
+                            case 10:
                                 Intent intentShareImageWhatsapp = new Intent(MainActivity.this, ShareImageWhatsappActivity.class);
                                 startActivity(intentShareImageWhatsapp);
                                 break;
-                            case 10:
+                            case 11:
                                 Intent intentSqliteCRUD = new Intent(MainActivity.this, SqliteCRUDActivity.class);
                                 startActivity(intentSqliteCRUD);
                                 break;

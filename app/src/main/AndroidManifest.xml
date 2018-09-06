@@ -52,6 +52,9 @@
         <activity
             android:name=".DrawLineWithFingerActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".PDFActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
