@@ -15,7 +15,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -55,6 +54,15 @@
         <activity
             android:name=".PDFActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".DownloadImageActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".RoomSQLiteActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddUserActivity"
+            android:parentActivityName=".RoomSQLiteActivity" />
     </application>
 
 </manifest>

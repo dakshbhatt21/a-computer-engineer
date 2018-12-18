@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="8dp"
+    android:paddingTop="4dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="4dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        cardview:cardCornerRadius="1dp"
+        cardview:cardElevation="2dp"
+        cardview:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_name"
+                android:layout_marginTop="3dp"
+                android:text="Phone"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_phone"
+                android:layout_marginTop="3dp"
+                android:text="Email"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_email"
+                android:layout_marginTop="3dp"
+                android:text="Address"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cl_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_address"
+                android:layout_marginTop="5dp">
+
+                <Button
+                    android:id="@+id/btn_edit"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Edit"
+                    cardview:layout_constraintBottom_toBottomOf="parent"
+                    cardview:layout_constraintEnd_toStartOf="@+id/btn_delete"
+                    cardview:layout_constraintHorizontal_bias="0.5"
+                    cardview:layout_constraintStart_toStartOf="parent"
+                    cardview:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btn_delete"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Delete"
+                    cardview:layout_constraintBottom_toBottomOf="parent"
+                    cardview:layout_constraintEnd_toEndOf="parent"
+                    cardview:layout_constraintHorizontal_bias="0.5"
+                    cardview:layout_constraintStart_toEndOf="@+id/btn_edit"
+                    cardview:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
