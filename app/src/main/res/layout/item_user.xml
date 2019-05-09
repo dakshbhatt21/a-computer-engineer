@@ -8,7 +8,7 @@
     android:paddingRight="8dp"
     android:paddingBottom="4dp">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                 android:textSize="16sp"
                 android:textStyle="normal" />
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_buttons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,9 +103,9 @@
                     cardview:layout_constraintHorizontal_bias="0.5"
                     cardview:layout_constraintStart_toEndOf="@+id/btn_edit"
                     cardview:layout_constraintTop_toTopOf="parent" />
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </RelativeLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
