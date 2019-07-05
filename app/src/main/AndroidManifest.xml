@@ -68,6 +68,9 @@
         <activity
             android:name=".ImageGridKotlinActivity"
             android:parentActivityName=".RoomSQLiteActivity" />
+        <activity
+            android:name=".OpenWhatsappNumberActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
