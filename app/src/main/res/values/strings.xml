@@ -23,4 +23,5 @@
     <string name="str_save_image_text">Your images has been saved in gallery at </string>
     <string name="enter_phone_number">Phone Number in +XX XXXXXXXXXX Format</string>
     <string name="open_in_whatsapp">Open Number in Whatsapp</string>
+    <string name="your_hint_here">Your Hint Here</string>
 </resources>

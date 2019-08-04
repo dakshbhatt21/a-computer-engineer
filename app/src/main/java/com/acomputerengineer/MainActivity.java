@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(llm);
 
         ArrayList<String> alPost = new ArrayList<>();
+        alPost.add("POPULATE AND MANIPULATE AUTOCOMPLETETEXTVIEW IN ANDROID");
         alPost.add("OPEN CHAT PAGE IN WHATSAPP FOR GIVEN NUMBER IN ANDROID");
         alPost.add("DISPLAY IMAGE GRID IN RECYCLERVIEW IN KOTLIN ANDROID");
         alPost.add("ROOM SQLITE DEMO WITH CRUD OPERATIONS IN ANDROID");
@@ -102,66 +103,70 @@ public class MainActivity extends AppCompatActivity {
 
                         switch (position) {
                             case 0:
+                                Intent intentAutoCompleteTextView = new Intent(MainActivity.this, AutoCompleteTextViewActivity.class);
+                                startActivity(intentAutoCompleteTextView);
+                                break;
+                            case 1:
                                 Intent intentOpenWhatsappNumber = new Intent(MainActivity.this, OpenWhatsappNumberActivity.class);
                                 startActivity(intentOpenWhatsappNumber);
                                 break;
-                            case 1:
+                            case 2:
                                 Intent intentImageGridKotlin = new Intent(MainActivity.this, ImageGridKotlinActivity.class);
                                 startActivity(intentImageGridKotlin);
                                 break;
-                            case 2:
+                            case 3:
                                 Intent intentRoomSQLite = new Intent(MainActivity.this, RoomSQLiteActivity.class);
                                 startActivity(intentRoomSQLite);
                                 break;
-                            case 3:
+                            case 4:
                                 Intent intentDownloadImage = new Intent(MainActivity.this, DownloadImageActivity.class);
                                 startActivity(intentDownloadImage);
                                 break;
-                            case 4:
+                            case 5:
                                 Intent intentPDF = new Intent(MainActivity.this, PDFActivity.class);
                                 startActivity(intentPDF);
                                 break;
-                            case 5:
+                            case 6:
                                 Intent intentDrawLineWithFinger = new Intent(MainActivity.this, DrawLineWithFingerActivity.class);
                                 startActivity(intentDrawLineWithFinger);
                                 break;
-                            case 6:
+                            case 7:
                                 Intent intentListAlertDialog = new Intent(MainActivity.this, ListAlertDialogActivity.class);
                                 startActivity(intentListAlertDialog);
                                 break;
-                            case 7:
+                            case 8:
                                 Intent intentImageGrid = new Intent(MainActivity.this, ImageGridActivity.class);
                                 startActivity(intentImageGrid);
                                 break;
-                            case 8:
+                            case 9:
                                 Intent intentPickImage = new Intent(MainActivity.this, PickImageActivity.class);
                                 startActivity(intentPickImage);
                                 break;
-                            case 9:
+                            case 10:
                                 Intent intentCanvasDemo = new Intent(MainActivity.this, CanvasDemoActivity.class);
                                 startActivity(intentCanvasDemo);
                                 break;
-                            case 10:
+                            case 11:
                                 Intent intentCircleImageView = new Intent(MainActivity.this, CircleImageViewActivity.class);
                                 startActivity(intentCircleImageView);
                                 break;
-                            case 11:
+                            case 12:
                                 Intent intentLimitNumberRange = new Intent(MainActivity.this, LimitNumberRangeActivity.class);
                                 startActivity(intentLimitNumberRange);
                                 break;
-                            case 12:
+                            case 13:
                                 Intent intentResizeImageDecodeBitmap = new Intent(MainActivity.this, ResizeImageDecodeBitmapActivity.class);
                                 startActivity(intentResizeImageDecodeBitmap);
                                 break;
-                            case 13:
+                            case 14:
                                 Intent intentMaterialDesignButtons = new Intent(MainActivity.this, MaterialDesignButtonsActivity.class);
                                 startActivity(intentMaterialDesignButtons);
                                 break;
-                            case 14:
+                            case 15:
                                 Intent intentShareImageWhatsapp = new Intent(MainActivity.this, ShareImageWhatsappActivity.class);
                                 startActivity(intentShareImageWhatsapp);
                                 break;
-                            case 15:
+                            case 16:
                                 Intent intentSqliteCRUD = new Intent(MainActivity.this, SqliteCRUDActivity.class);
                                 startActivity(intentSqliteCRUD);
                                 break;

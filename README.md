@@ -2,6 +2,7 @@
 Collection of <b>Android source code</b> for my blog <b>[A Computer Engineer](http://acomputerengineer.wordpress.com/)</b>.
 
 Current source code:
+- Populate and manipulate AutoCompleteTextView in Android(<a href='https://acomputerengineer.wordpress.com/2019/08/04/populate-and-manipulate-autocompletetextview-in-android/' target='_blank'>view article</a>)
 - Open chat page in Whatsapp for given number in Android(<a href='https://acomputerengineer.wordpress.com/2019/07/05/open-chat-page-in-whatsapp-for-given-number-in-android/' target='_blank'>view article</a>)
 - Display image grid in RecyclerView in Kotlin Android(<a href='https://acomputerengineer.wordpress.com/2019/05/09/display-image-grid-in-recyclerview-in-kotlin-android/' target='_blank'>view article</a>)
 - Room SQLite demo with CRUD operations in Android(<a href='https://acomputerengineer.wordpress.com/2018/12/18/room-sqlite-demo-with-crud-operations-in-android/'>view article</a>)
