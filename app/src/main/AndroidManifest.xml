@@ -74,6 +74,9 @@
         <activity
             android:name=".AutoCompleteTextViewActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".BottomNavigationViewActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

@@ -19,7 +19,7 @@ class AutoCompleteTextViewAdapter(private val c: Context, @LayoutRes private val
 
     override fun getItem(position: Int): AutoCompleteTextViewActivity.Movie = filteredMovies[position]
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = convertView ?: LayoutInflater.from(c).inflate(layoutResource, parent, false)
 
         view.tvMovieName.text = filteredMovies[position].name

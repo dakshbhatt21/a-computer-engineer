@@ -12,6 +12,9 @@
     <string name="str_maximum_size">Enter Maximum Size</string>
     <string name="str_share_image">Share Image(Default)</string>
     <string name="str_share_image_whatsapp">Share Image(Only Whatsapp)</string>
+    <string name="str_bnv_tab1">Tab 1</string>
+    <string name="str_bnv_tab2">Tab 2</string>
+    <string name="str_bnv_tab3">Tab 3</string>
 
     <string name="act_canvas_demo">Canvas Demo</string>
 
