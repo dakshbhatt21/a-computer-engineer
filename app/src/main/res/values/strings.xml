@@ -15,6 +15,13 @@
     <string name="str_bnv_tab1">Tab 1</string>
     <string name="str_bnv_tab2">Tab 2</string>
     <string name="str_bnv_tab3">Tab 3</string>
+    <string name="login_note">Welcome! Please login.</string>
+    <string name="welcome_note">Welcome %s!</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="login_validation">Please enter username and password</string>
 
     <string name="act_canvas_demo">Canvas Demo</string>
 
