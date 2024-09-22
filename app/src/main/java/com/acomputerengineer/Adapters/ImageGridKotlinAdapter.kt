@@ -2,16 +2,13 @@ package com.acomputerengineer.Adapters
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.acomputerengineer.R
+import com.acomputerengineer.databinding.ItemGridKotlinBinding
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_grid_kotlin.view.*
 
 class ImageGridKotlinAdapter(private val c: Context, private val images: ArrayList<String>) :
-        RecyclerView.Adapter<ImageGridKotlinAdapter.ColorViewHolder>() {
+    RecyclerView.Adapter<ImageGridKotlinAdapter.ColorViewHolder>() {
 
 
     override fun getItemCount(): Int {
@@ -19,24 +16,20 @@ class ImageGridKotlinAdapter(private val c: Context, private val images: ArrayLi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorViewHolder {
-        return ColorViewHolder(LayoutInflater.from(c).inflate(R.layout.item_grid_kotlin, parent, false))
+        val binding = ItemGridKotlinBinding.inflate(LayoutInflater.from(c), parent, false)
+        return ColorViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ColorViewHolder, position: Int) {
         val path = images[position]
 
-        Picasso.get()
-                .load(path)
-                .resize(250, 250)
-                .centerCrop()
-                .into(holder.iv)
+        Picasso.get().load(path).resize(250, 250).centerCrop().into(holder.binding.iv)
 
-        holder.iv.setOnClickListener {
+        holder.binding.iv.setOnClickListener {
             //handle click event on image
         }
     }
 
-    class ColorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val iv = view.iv as ImageView
-    }
+    class ColorViewHolder(val binding: ItemGridKotlinBinding) : RecyclerView.ViewHolder(binding.root)
+
 }

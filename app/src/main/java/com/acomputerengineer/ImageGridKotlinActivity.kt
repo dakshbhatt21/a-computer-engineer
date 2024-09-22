@@ -1,20 +1,23 @@
 package com.acomputerengineer
 
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.acomputerengineer.Adapters.ImageGridKotlinAdapter
-import kotlinx.android.synthetic.main.activity_image_grid_kotlin.*
-import java.util.*
+import com.acomputerengineer.databinding.ActivityImageGridKotlinBinding
 
 class ImageGridKotlinActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityImageGridKotlinBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_image_grid_kotlin)
+        binding = ActivityImageGridKotlinBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val sglm = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        rv.layoutManager = sglm
+        binding.rv.layoutManager = sglm
 
         val imageList = ArrayList<String>()
         imageList.add("https://picsum.photos/id/111/200")
@@ -35,7 +38,6 @@ class ImageGridKotlinActivity : AppCompatActivity() {
         imageList.add("https://picsum.photos/id/16/200")
         imageList.add("https://picsum.photos/id/17/200")
         val igka = ImageGridKotlinAdapter(this, imageList)
-        rv.adapter = igka
+        binding.rv.adapter = igka
     }
-
 }

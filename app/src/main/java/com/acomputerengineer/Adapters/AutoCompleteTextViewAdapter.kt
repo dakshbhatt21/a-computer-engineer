@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.Filter
 import androidx.annotation.LayoutRes
 import com.acomputerengineer.AutoCompleteTextViewActivity
-import kotlinx.android.synthetic.main.item_auto_complete_text_view.view.*
+import com.acomputerengineer.databinding.ItemAutoCompleteTextViewBinding
 
 class AutoCompleteTextViewAdapter(private val c: Context, @LayoutRes private val layoutResource: Int, private val movies: Array<AutoCompleteTextViewActivity.Movie>) :
         ArrayAdapter<AutoCompleteTextViewActivity.Movie>(c, layoutResource, movies) {
@@ -20,10 +20,20 @@ class AutoCompleteTextViewAdapter(private val c: Context, @LayoutRes private val
     override fun getItem(position: Int): AutoCompleteTextViewActivity.Movie = filteredMovies[position]
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val view = convertView ?: LayoutInflater.from(c).inflate(layoutResource, parent, false)
+        val binding: ItemAutoCompleteTextViewBinding
+        val view: View
 
-        view.tvMovieName.text = filteredMovies[position].name
-        view.tvMovieYear.text = filteredMovies[position].year.toString()
+        if (convertView == null) {
+            binding = ItemAutoCompleteTextViewBinding.inflate(LayoutInflater.from(c), parent, false)
+            view = binding.root
+            view.tag = binding
+        } else {
+            binding = convertView.tag as ItemAutoCompleteTextViewBinding
+            view = convertView
+        }
+
+        binding.tvMovieName.text = filteredMovies[position].name
+        binding.tvMovieYear.text = filteredMovies[position].year.toString()
 
         return view
     }

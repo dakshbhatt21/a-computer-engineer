@@ -6,17 +6,19 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_open_whatsapp_number.*
-
+import com.acomputerengineer.databinding.ActivityOpenWhatsappNumberBinding
 
 class OpenWhatsappNumberActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityOpenWhatsappNumberBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_open_whatsapp_number)
+        binding = ActivityOpenWhatsappNumberBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        btn.setOnClickListener {
-            val phoneNumber = et.text.toString()
+        binding.btn.setOnClickListener {
+            val phoneNumber = binding.et.text.toString()
             val url = "https://api.whatsapp.com/send?phone=$phoneNumber"
             try {
                 packageManager.getPackageInfo("com.whatsapp", PackageManager.GET_ACTIVITIES)
@@ -29,5 +31,4 @@ class OpenWhatsappNumberActivity : AppCompatActivity() {
             }
         }
     }
-
 }
