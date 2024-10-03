@@ -2,7 +2,7 @@
 Collection of <b>Android source code</b> for my blog <b>[A Computer Engineer](http://acomputerengineer.com/)</b>.
 
 Current source code:
-- SharedPreferences in Android Kotlin (with How to Remember User Login/Session Example)(<a href='https://acomputerengineer.com/2020/02/11/sharedpreferences-in-android-kotlin-with-how-to-remember-user-login-session-example/' target='_blank'>view article</a>)
+- Add text on video in Android using Media3 Transformer APIs(<a href='https://acomputerengineer.com/2024/09/23/add-text-on-video-in-android-using-media3-and-transformer-apis/' target='_blank'>view article</a>)
 - Different colors for selected tab in BottomNavigationView in Android Kotlin(Programmatically)(<a href='https://acomputerengineer.com/2020/01/13/different-colors-for-selected-tab-in-bottomnavigationview-in-android-kotlinprogrammatically/' target='_blank'>view article</a>)
 - Populate and manipulate AutoCompleteTextView in Android(<a href='https://acomputerengineer.com/2019/08/04/populate-and-manipulate-autocompletetextview-in-android/' target='_blank'>view article</a>)
 - Open chat page in Whatsapp for given number in Android(<a href='https://acomputerengineer.com/2019/07/05/open-chat-page-in-whatsapp-for-given-number-in-android/' target='_blank'>view article</a>)
